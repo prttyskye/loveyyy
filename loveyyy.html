@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>loveyy</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #E0BBE4; /* Thistle background */
+        color: #fff; /* White text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        text-align: center;
+    }
+    .question {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .buttons {
+        margin: 10px 0;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 0 10px;
+        cursor: pointer;
+        background-color: #957DAD; /* Lavender Purple background for buttons */
+        color: #fff; /* White text for buttons */
+        border: none;
+        border-radius: 4px;
+    }
+    .message {
+        margin-top: 20px;
+        font-size: 15px;
+        max-width: 600px;
+        margin: auto;
+        text-align: left;
+        white-space: pre-wrap;
+        visibility: hidden;
+    }
+    .compliment {
+        margin: 5px 0;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="question">wanna know why i love you?(⁠｡⁠•̀⁠ᴗ⁠-⁠)⁠✧</div>
+    <div class="buttons">
+        <button onclick="showMessage()">Yes</button>
+        <button id="noButton" onclick="moveButton()">No</button>
+    </div>
+    <div class="message" id="responseMessage"></div>
+</div>
+
+<script>
+const compliments = [
+    "well, i don't really know. all i know is im happy with you, when we first started talking I felt something. like a spark yk.",
+    "and everytime we talk, all i felt was happiness. i know we started too fast, but who cares? i don't care what anybody else think, all i know is i love talking to you, having you with me by my side, i love seeing you smile, and laugh knowing I'm the reason behind it.",
+    "i don't know why i love you, but I'm me when im with you, i can be who i am with you without judgement.",
+    "with you, i feel safe and comfortable. it feels like home with you.",
+    "idk why i love you, but your sense of humor is just yk hehe you're funny and i love it. you make me laugh even on the toughest days.",
+    "idk why i love you, but i must say you are intelligent. I learned something new from our conversations. you're amazing:D",
+    "idk why i love you, you make me feel heard and understood on times when i don't even understand myself",
+    "idk why i love you, maybe because of your personality? you're sweet, and kind. everything about you is perfect and i love you sooooo much ",
+    "idk why i love you, but i do know that i love you and that's what I feel. my love for you keeps growing each day and i won't get tired of loving you. loving you is the best decision i made. I'll choose you everyday.",
+    "I want to express my gratitude for everything you do for me, even if you don’t always realize it. Thank you for loving me unconditionally, even when I’m difficult to deal with. I appreciate your patience, especially during my stubborn moments. Thank you for making time for me and for always pushing me to do my best. Your belief in me means a lot, especially when I struggle to believe in myself. You are truly amazing. Every day, you are the first thing on my mind. You are special and unique—no one has your personality or your smile. No one can compare to you. A world without you would be different, and your existence matters, no matter how you see it. Remember, you’re here for a reason, and even though life can be tough, you’re not alone in this.",
+    "I love being with you; there’s no one else I’d rather spend my time with. You make me smile and laugh like no one else can. I’ve never loved anyone the way I love you. You are my other half, my love, my best friend, and my happily ever after. You are everything I’ve ever wished for. I love you and only you, and I’ll embrace all your flaws and insecurities because I accept you for who you are. I’ll always make time for you, no matter how busy I am, because you mean the world to me. You are my top priority. I promise to always be here for you when you need support, and I’ll accept your past mistakes. I want to be not only your wife but also your best friend. I want you to trust me completely and share your problems with me—I’m here to listen. I can’t promise a perfect relationship since we’ll face challenges and misunderstandings, but I promise to stand by your side and love you unconditionally, no matter what happens now or in the future.",
+    "I LOVE YOUUUUUU SO MUCH, MY SANCTUARY"
+];
+
+const colors = ["#FA8072", "#F98B88", "#F08080", "#F67280", "#E77471", "#F75D59", "#E55451", "#E55451", "#E55451", "#CD5C5C", "#FA8072", "E55451"];
+
+function showMessage() {
+    const messageBox = document.getElementById('responseMessage');
+    messageBox.innerHTML = ''; // Clear previous messages
+    messageBox.style.visibility = 'visible';
+    let complimentIndex = 0;
+
+    function typeCompliment(i) {
+        if (i < compliments.length) {
+            let pos = 0;
+            const text = compliments[i];
+            const p = document.createElement('p');
+            p.className = 'compliment';
+            p.style.color = colors[i]; // Set the color for each compliment
+            messageBox.appendChild(p);
+
+            const interval = setInterval(() => {
+                if (pos < text.length) {
+                    p.textContent += text.charAt(pos);
+                    pos++;
+                } else {
+                    clearInterval(interval);
+                    typeCompliment(i + 1); // Type the next compliment
+                }
+            }, 75); // Adjust for typing speed
+        }
+    }
+
+    typeCompliment(complimentIndex);
+}
+
+function moveButton() {
+    var noButton = document.getElementById('noButton');
+    noButton.style.position = 'relative';
+    let moved = 0;
+    const interval = setInterval(() => {
+        if (moved < 500) { // Increase distance to ensure it moves far enough
+            noButton.style.left = `${moved}px`;
+            moved += 10; // Increase step size for a faster movement
+        } else {
+            clearInterval(interval);
+        }
+    }, 20); // Speed up the movement
+}
+</script>
+</body>
+  </html>
